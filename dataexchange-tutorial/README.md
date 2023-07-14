@@ -150,7 +150,7 @@ struct DataBlock
 } // Tutorial
 ```
 
-So, we want send the sample rate and size and the number of channels and the number of samples plus 
+So, we want to send the sample rate, size, the number of channels and the number of samples plus 
 the actual samples to the controller.
 
 To actually work with this `DataBlock` struct we introduce a little helper function we also add to
@@ -191,7 +191,7 @@ tresult PLUGIN_API DataExchangeProcessor::process (Vst::ProcessData& processData
 
 When there are no samples in the `processData` we jump out of the method directly.
 
-Now the first thing we need to do is to lock and new block from the `dataExchange` object:
+Now the first thing we need to do is to acquire a new block from the `dataExchange` object:
 
 ```c++
 tresult PLUGIN_API DataExchangeProcessor::process (Vst::ProcessData& processData)
