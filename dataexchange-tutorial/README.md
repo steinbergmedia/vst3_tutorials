@@ -1,6 +1,8 @@
 #  VST3 Data Exchange Tutorial Plug-in
 
-This tutorial shows how to use the Data Exchange API via the wrapper class which supports using the API in hosts without native support for the API
+This tutorial shows how to use the Data Exchange API via the backwards compatible wrapper class which either uses the API directly if available or uses an alternative IMessage based method to provide the same functionality for hosts not implementing the API.
+
+In this example the audio processor sends the samples it processes to the controller in 1 second big chunks.
 
 ## How to build
 
