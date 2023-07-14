@@ -4,6 +4,8 @@ This tutorial shows how to use the Data Exchange API via the backwards compatibl
 
 In this example the audio processor sends the samples it processes to the controller in 1 second big chunks.
 
+---
+
 ## How to build
 
 ### macOS
@@ -15,7 +17,7 @@ In this example the audio processor sends the samples it processes to the contro
 ### Windows
 
         mkdir build
-        cmake -Dvst3sdk_SOURCE_DIR="PATH_TO_YOUR_VST_SDK_FOLDER" ../
+        cmake -Dvst3sdk_SOURCE_DIR="PATH_TO_YOUR_VST_SDK_FOLDER" ..\
         cmake --build .
 
 ### Linux
@@ -23,6 +25,8 @@ In this example the audio processor sends the samples it processes to the contro
         mkdir build
         cmake -Dvst3sdk_SOURCE_DIR="PATH_TO_YOUR_VST_SDK_FOLDER" ../
         cmake --build .
+
+---
 
 ## Tutorial - How to use the Data Exchange API
 
