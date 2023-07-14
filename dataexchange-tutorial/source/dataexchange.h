@@ -1,10 +1,14 @@
+//------------------------------------------------------------------------
+// Copyright(c) 2023 Steinberg Media Technologies.
+//------------------------------------------------------------------------
+
 #pragma once
 
 #include "public.sdk/source/vst/utility/dataexchange.h"
 #include <cstdint>
 
 //------------------------------------------------------------------------
-namespace Tutorial {
+namespace Steinberg::Tutorial {
 
 //------------------------------------------------------------------------
 struct DataBlock
@@ -17,12 +21,12 @@ struct DataBlock
 };
 
 //------------------------------------------------------------------------
-inline DataBlock* toDataBlock (const Steinberg::Vst::DataExchangeBlock& block)
+inline DataBlock* toDataBlock (const Vst::DataExchangeBlock& block)
 {
-	if (block.blockID != Steinberg::Vst::InvalidDataExchangeBlockID)
+	if (block.blockID != Vst::InvalidDataExchangeBlockID)
 		return reinterpret_cast<DataBlock*> (block.data);
 	return nullptr;
 }
 
 //------------------------------------------------------------------------
-} // Tutorial
+} // Steinberg::Tutorial

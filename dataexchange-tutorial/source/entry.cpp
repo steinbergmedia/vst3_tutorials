@@ -12,7 +12,7 @@
 #define stringPluginName "dataexchange-tutorial"
 
 using namespace Steinberg::Vst;
-using namespace Tutorial;
+using namespace Steinberg::Tutorial;
 
 //------------------------------------------------------------------------
 //  VST Plug-in Entry

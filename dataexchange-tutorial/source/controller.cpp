@@ -5,9 +5,7 @@
 #include "cids.h"
 #include "controller.h"
 
-using namespace Steinberg;
-
-namespace Tutorial {
+namespace Steinberg::Tutorial {
 
 //------------------------------------------------------------------------
 // DataExchangeController Implementation
@@ -50,4 +48,4 @@ void PLUGIN_API DataExchangeController::onDataExchangeBlocksReceived (
 }
 
 //------------------------------------------------------------------------
-} // namespace Tutorial
+} // namespace Steinberg::Tutorial

@@ -8,9 +8,8 @@
 #include "base/source/fstreamer.h"
 #include "pluginterfaces/vst/ivstparameterchanges.h"
 
-using namespace Steinberg;
+namespace Steinberg::Tutorial {
 
-namespace Tutorial {
 //------------------------------------------------------------------------
 // DataExchangeProcessor
 //------------------------------------------------------------------------
@@ -157,4 +156,4 @@ tresult PLUGIN_API DataExchangeProcessor::process (Vst::ProcessData& processData
 }
 
 //------------------------------------------------------------------------
-} // namespace Tutorial
+} // namespace Steinberg::Tutorial
