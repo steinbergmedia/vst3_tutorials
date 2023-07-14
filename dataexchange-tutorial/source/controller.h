@@ -17,9 +17,6 @@ class DataExchangeController : public Steinberg::Vst::EditControllerEx1,
 {
 public:
 //------------------------------------------------------------------------
-	DataExchangeController ();
-	~DataExchangeController () override;
-
 	// Create function
 	static Steinberg::FUnknown* createInstance (void* /*context*/)
 	{
@@ -45,8 +42,8 @@ public:
 	DELEGATE_REFCOUNT (EditController)
 
 //------------------------------------------------------------------------
-protected:
-	Steinberg::Vst::DataExchangeReceiverHandler dataExchange;
+private:
+	Steinberg::Vst::DataExchangeReceiverHandler dataExchange {this};
 };
 
 //------------------------------------------------------------------------

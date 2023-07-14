@@ -93,29 +93,16 @@ tresult PLUGIN_API DataExchangeProcessor::canProcessSampleSize (int32 symbolicSa
 }
 
 //------------------------------------------------------------------------
-DataBlock* DataExchangeProcessor::getDataBlock () const
+void DataExchangeProcessor::acquireNewExchangeBlock ()
 {
-	if (currentExchangeBlock.blockID != Vst::InvalidDataExchangeBlockID)
-		return toDataBlock (currentExchangeBlock);
-	return nullptr;
-}
-
-//------------------------------------------------------------------------
-bool DataExchangeProcessor::aquireNewExchangeBlock ()
-{
-	if (currentExchangeBlock.blockID != Vst::InvalidDataExchangeBlockID)
-		return false;
 	currentExchangeBlock = dataExchange->getCurrentOrNewBlock ();
-	if (currentExchangeBlock.blockID == Vst::InvalidDataExchangeBlockID)
-		return false;
-
-	auto block = getDataBlock ();
-	block->sampleRate = static_cast<uint32_t> (processSetup.sampleRate);
-	block->numChannels = numChannels;
-	block->sampleSize = sizeof (float);
-	block->numSamples = 0;
-
-	return currentExchangeBlock.blockID != Vst::InvalidDataExchangeBlockID;
+	if (auto block = toDataBlock (currentExchangeBlock))
+	{
+		block->sampleRate = static_cast<uint32_t> (processSetup.sampleRate);
+		block->numChannels = numChannels;
+		block->sampleSize = sizeof (float);
+		block->numSamples = 0;
+	}
 }
 
 //------------------------------------------------------------------------
@@ -125,15 +112,13 @@ tresult PLUGIN_API DataExchangeProcessor::process (Vst::ProcessData& processData
 		return kResultTrue;
 
 	if (currentExchangeBlock.blockID == Vst::InvalidDataExchangeBlockID)
-		aquireNewExchangeBlock ();
+		acquireNewExchangeBlock ();
 
 	auto input = processData.inputs[0];
 	auto output = processData.outputs[0];
 
-	if (currentExchangeBlock.blockID != Vst::InvalidDataExchangeBlockID)
+	if (auto block = toDataBlock (currentExchangeBlock))
 	{
-		auto block = getDataBlock ();
-
 		auto numSamples = static_cast<uint32> (processData.numSamples);
 		while (numSamples > 0)
 		{
@@ -150,10 +135,10 @@ tresult PLUGIN_API DataExchangeProcessor::process (Vst::ProcessData& processData
 			if (block->numSamples == block->sampleRate)
 			{
 				dataExchange->sendCurrentBlock ();
-				currentExchangeBlock = InvalidDataExchangeBlock;
-				if (!aquireNewExchangeBlock ())
+				acquireNewExchangeBlock ();
+				block = toDataBlock (currentExchangeBlock);
+				if (block == nullptr)
 					break;
-				block = getDataBlock ();
 			}
 			numSamples -= numSamplesToCopy;
 		}

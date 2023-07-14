@@ -17,13 +17,11 @@ struct DataBlock
 };
 
 //------------------------------------------------------------------------
-static constexpr Steinberg::Vst::DataExchangeBlock InvalidDataExchangeBlock = {
-    nullptr, 0, Steinberg::Vst::InvalidDataExchangeBlockID};
-
-//------------------------------------------------------------------------
 inline DataBlock* toDataBlock (const Steinberg::Vst::DataExchangeBlock& block)
 {
-	return reinterpret_cast<DataBlock*> (block.data);
+	if (block.blockID != Steinberg::Vst::InvalidDataExchangeBlockID)
+		return reinterpret_cast<DataBlock*> (block.data);
+	return nullptr;
 }
 
 //------------------------------------------------------------------------

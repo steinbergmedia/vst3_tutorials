@@ -12,17 +12,11 @@ namespace Tutorial {
 //------------------------------------------------------------------------
 // DataExchangeController Implementation
 //------------------------------------------------------------------------
-DataExchangeController::DataExchangeController () : dataExchange (this)
-{
-}
-
-//------------------------------------------------------------------------
-DataExchangeController::~DataExchangeController () = default;
-
-//------------------------------------------------------------------------
 tresult PLUGIN_API DataExchangeController::notify (Vst::IMessage* message)
 {
-	return dataExchange.onMessage (message);
+	if (dataExchange.onMessage (message))
+		return kResultTrue;
+	return EditControllerEx1::notify (message);
 }
 
 //------------------------------------------------------------------------

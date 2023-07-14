@@ -10,6 +10,10 @@
 namespace Tutorial {
 
 //------------------------------------------------------------------------
+static constexpr Steinberg::Vst::DataExchangeBlock InvalidDataExchangeBlock = {
+    nullptr, 0, Steinberg::Vst::InvalidDataExchangeBlockID};
+
+//------------------------------------------------------------------------
 //  DataExchangeProcessor
 //------------------------------------------------------------------------
 class DataExchangeProcessor : public Steinberg::Vst::AudioEffect
@@ -33,8 +37,7 @@ public:
 	tresult PLUGIN_API process (Steinberg::Vst::ProcessData& data) override;
 //------------------------------------------------------------------------
 protected:
-	DataBlock* getDataBlock () const;
-	bool aquireNewExchangeBlock ();
+	void acquireNewExchangeBlock ();
 
 	std::unique_ptr<Steinberg::Vst::DataExchangeHandler> dataExchange;
 	Steinberg::Vst::DataExchangeBlock currentExchangeBlock {InvalidDataExchangeBlock};
