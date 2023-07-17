@@ -23,15 +23,15 @@ add_subdirectory(${vst3sdk_SOURCE_DIR} ${PROJECT_BINARY_DIR}/vst3sdk)
 smtg_enable_vst3_sdk()
 
 smtg_add_vst3plugin(dataexchange_tutorial
-    source/version.h
-    source/cids.h
-    source/dataexchange.h
-    source/processor.h
-    source/processor.cpp
-    source/controller.h
-    source/controller.cpp
-    source/entry.cpp
     README.md
+    source/cids.h
+    source/controller.cpp
+    source/controller.h
+    source/dataexchange.h
+    source/entry.cpp
+    source/processor.cpp
+    source/processor.h
+    source/version.h
 )
 
 target_compile_features(dataexchange_tutorial
