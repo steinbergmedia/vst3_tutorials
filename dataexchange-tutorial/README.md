@@ -136,7 +136,7 @@ define a struct how this data should look like and move this into its own header
 #include "public.sdk/source/vst/utility/dataexchange.h"
 #include <cstdint>
 
-namespace Tutorial {
+namespace Steinberg::Tutorial {
 
 struct DataBlock
 {
@@ -147,7 +147,7 @@ struct DataBlock
     float samples[0];
 };
 
-} // Tutorial
+} // Steinberg::Tutorial
 ```
 
 So, we want to send the sample rate, size, the number of channels and the number of samples plus 
@@ -165,7 +165,7 @@ inline DataBlock* toDataBlock (const Vst::DataExchangeBlock& block)
 }
 ```
 
-One thing is left todo before we can implement the sending of the data and that is that we need a 
+One thing is left to do before we can implement the sending of the data and that is that we need a 
 member variable of the Vst::DataExchangeBlock struct where we store the actual block we work with
 while processing the audio. So we add this to our processor defintion:
 
@@ -220,7 +220,7 @@ void DataExchangeProcessor::acquireNewExchangeBlock ()
 }
 ```
 
-We ask the `dataExchange` object for a new block with `getCurrentOrNewBlock ()` check if it is valid 
+We ask the `dataExchange` object for a new block with `getCurrentOrNewBlock ()`, check if it is valid 
 with a call to the previously defined function `toDataBlock` and fill it with the sample rate, the 
 sample size and the number of channels.
 
