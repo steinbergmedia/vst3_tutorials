@@ -45,7 +45,7 @@ tresult PLUGIN_API DataExchangeProcessor::connect (Vst::IConnectionPoint* other)
 		auto configCallback = [this] (Vst::DataExchangeHandler::Config& config,
 		                              const Vst::ProcessSetup& setup) {
 			Vst::SpeakerArrangement arr;
-			getBusArrangement (Vst::BusDirections::kOutput, 0, arr);
+			getBusArrangement (Vst::BusDirections::kInput, 0, arr);
 			numChannels = static_cast<uint16_t> (Vst::SpeakerArr::getChannelCount (arr));
 			auto sampleSize = sizeof (float);
 

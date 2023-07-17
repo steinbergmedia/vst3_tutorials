@@ -72,7 +72,7 @@ tresult PLUGIN_API DataExchangeProcessor::connect (Vst::IConnectionPoint* other)
         auto configCallback = [this] (Vst::DataExchangeHandler::Config& config,
                                       const Vst::ProcessSetup& setup) {
             Vst::SpeakerArrangement arr;
-            getBusArrangement (Vst::BusDirections::kOutput, 0, arr);
+            getBusArrangement (Vst::BusDirections::kInput, 0, arr);
             numChannels = static_cast<uint16_t> (Vst::SpeakerArr::getChannelCount (arr));
             auto sampleSize = sizeof (float);
 
@@ -92,7 +92,7 @@ tresult PLUGIN_API DataExchangeProcessor::connect (Vst::IConnectionPoint* other)
 
 The configration is done via the `configCallback`. In this example we configure the queue to have
 a block size to store exactly 1 second of audio data of all the channels of the configured speaker 
-arrangement of the output bus. We choose two for `numBlocks` because we send one block per second
+arrangement of the input bus. We choose two for `numBlocks` because we send one block per second
 and in this case two blocks should be enough. If the frequency you need to send the block is higher
 you need to increase this value to prevent data drop outs.
 The `configCallback` is called when the audio processor is activated.
