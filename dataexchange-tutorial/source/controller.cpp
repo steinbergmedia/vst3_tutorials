@@ -20,7 +20,7 @@ tresult PLUGIN_API DataExchangeController::notify (Vst::IMessage* message)
 //------------------------------------------------------------------------
 void PLUGIN_API DataExchangeController::queueOpened (Vst::DataExchangeUserContextID userContextID,
                                                      uint32 blockSize,
-                                                     bool& dispatchOnBackgroundThread)
+                                                     TBool& dispatchOnBackgroundThread)
 {
 	FDebugPrint ("Data Exchange Queue opened.\n");
 }
@@ -34,7 +34,7 @@ void PLUGIN_API DataExchangeController::queueClosed (Vst::DataExchangeUserContex
 //------------------------------------------------------------------------
 void PLUGIN_API DataExchangeController::onDataExchangeBlocksReceived (
     Vst::DataExchangeUserContextID userContextID, uint32 numBlocks, Vst::DataExchangeBlock* blocks,
-    bool onBackgroundThread)
+    TBool onBackgroundThread)
 {
 	for (auto index = 0u; index < numBlocks; ++index)
 	{

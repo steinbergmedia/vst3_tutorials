@@ -336,12 +336,12 @@ public:
     tresult PLUGIN_API notify (Vst::IMessage* message) override;
     void PLUGIN_API queueOpened (Vst::DataExchangeUserContextID userContextID,
                                  uint32 blockSize,
-                                 bool& dispatchOnBackgroundThread) override;
+                                 TBool& dispatchOnBackgroundThread) override;
     void PLUGIN_API queueClosed (Vst::DataExchangeUserContextID userContextID) override;
     void PLUGIN_API onDataExchangeBlocksReceived (Vst::DataExchangeUserContextID userContextID, 
                                                   uint32 numBlocks,
                                                   Vst::DataExchangeBlock* blocks, 
-                                                  bool onBackgroundThread) override;
+                                                  TBool onBackgroundThread) override;
 
     DEFINE_INTERFACES
         DEF_INTERFACE (Vst::IDataExchangeReceiver)
@@ -369,7 +369,7 @@ And next we can implement the `IDataExchangeReceiver` methods:
 ```c++
 void PLUGIN_API DataExchangeController::queueOpened (Vst::DataExchangeUserContextID userContextID,
                                                      uint32 blockSize,
-                                                     bool& dispatchOnBackgroundThread)
+                                                     TBool& dispatchOnBackgroundThread)
 {
     FDebugPrint ("Data Exchange Queue opened.\n");
 }
@@ -381,7 +381,7 @@ void PLUGIN_API DataExchangeController::queueClosed (Vst::DataExchangeUserContex
 
 void PLUGIN_API DataExchangeController::onDataExchangeBlocksReceived (
     Vst::DataExchangeUserContextID userContextID, uint32 numBlocks, Vst::DataExchangeBlock* blocks,
-    bool onBackgroundThread)
+    TBool onBackgroundThread)
 {
     for (auto index = 0u; index < numBlocks; ++index)
     {

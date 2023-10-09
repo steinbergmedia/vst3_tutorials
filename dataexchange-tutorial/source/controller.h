@@ -27,11 +27,11 @@ public:
 
 	// IDataExchangeReceiver
 	void PLUGIN_API queueOpened (Vst::DataExchangeUserContextID userContextID, uint32 blockSize,
-	                             bool& dispatchOnBackgroundThread) override;
+	                             TBool& dispatchOnBackgroundThread) override;
 	void PLUGIN_API queueClosed (Vst::DataExchangeUserContextID userContextID) override;
 	void PLUGIN_API onDataExchangeBlocksReceived (Vst::DataExchangeUserContextID userContextID,
 	                                              uint32 numBlocks, Vst::DataExchangeBlock* blocks,
-	                                              bool onBackgroundThread) override;
+	                                              TBool onBackgroundThread) override;
 	//---Interface---------
 	DEFINE_INTERFACES
 		// Here you can add more supported VST3 interfaces
