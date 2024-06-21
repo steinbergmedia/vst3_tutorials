@@ -134,7 +134,7 @@ if (SMTG_MAC AND XCODE AND SMTG_COREAUDIO_SDK_PATH)
 	include(SMTG_AddVST3AuV2)
 	smtg_target_add_auv2(VST3_AU_PlugIn_AU
 		BUNDLE_NAME audiounit_tutorial
-		BUNDLE_IDENTIFIER com.steinberg.vst3sdk.audiounit-tutorial.audiounit
+		BUNDLE_IDENTIFIER com.steinberg.vst3sdk.audiounit_tutorial.audiounit
 		INFO_PLIST_TEMPLATE ${CMAKE_CURRENT_SOURCE_DIR}/resource/au-info.plist
 		VST3_PLUGIN_TARGET VST3_AU_PlugIn)
     smtg_target_set_debug_executable(VST3_AU_PlugIn_AU "/Applications/Reaper.app")
