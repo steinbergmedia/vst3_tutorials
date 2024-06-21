@@ -1,12 +1,8 @@
-#  AudioUnit Tutorial
+#  AudioUnit Version 2 Tutorial
 
-In this tutorial you will learn how to add AudioUnit support to your VST3 Plug-In.
+In this tutorial you will learn how to add AudioUnit Version 2 support to your VST3 Plug-In.
 
 First of all, you need a VST3 plug-in project. For this tutorial I have generated one via the Project Generator from the SDK.
-
-Then you need to decide which version of the AudioUnit API you want to use, either 
-Version 2 or Version 3. Both have their pros and cons, but this is out of scope for this tutorial.
-We will show how to generate both of them.
 
 # Adding the AudioUnit Version 2 Target
 
@@ -143,5 +139,3 @@ endif(SMTG_MAC AND XCODE AND SMTG_COREAUDIO_SDK_PATH)
 
 Now after generating and building the project the "audiounit_tutorial" plug-in should be available in
 any AudioUnit host.
-
-# Adding the AudioUnit Version 3 Target
