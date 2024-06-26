@@ -1,8 +1,8 @@
 #  AudioUnit Version 2 Tutorial
 
-In this tutorial you will learn how to add AudioUnit Version 2 support to your VST3 Plug-In.
+In this tutorial you will learn how to add AudioUnit Version 2 support to your VST 3 Plug-In.
 
-First of all, you need a VST3 plug-in project. For this tutorial I have generated one via the Project Generator from the SDK.
+First of all, you need a VST 3 plug-in project. For this tutorial we have generated one via the Project Generator from the SDK.
 
 # Adding the AudioUnit Version 2 Target
 
@@ -12,7 +12,7 @@ The AudioUnit Version 2 target needs the official AudioUnit SDK from Apple.
 As of this writing you can find it on GitHub: [https://github.com/apple/AudioUnitSDK](https://github.com/apple/AudioUnitSDK)
 
 How you obtain and store the SDK is up to you, for the reproducibility of this tutorial, we will download it via CMake when generating the project.
-So we add the following text to the CMakeLists.txt directly before we include the VST3 SDK.
+So we add the following text to the CMakeLists.txt directly before we include the VST 3 SDK.
 
 ```
 include(FetchContent)
@@ -28,7 +28,7 @@ FetchContent_GetProperties(
 )
 ```
 
-It is important to set the `SMTG_AUDIOUNIT_SDK_PATH` variable to tell the VST3 SDK where to find the AudioUnit SDK.
+It is important to set the `SMTG_AUDIOUNIT_SDK_PATH` variable to tell the VST 3 SDK where to find the AudioUnit SDK.
 
 ## Creating the property list
 
@@ -105,7 +105,7 @@ If you build an audio effect you also need to add the supported channel layouts 
 	</dict>
 	<dict>
 		<key>Outputs</key>
-		<string>0</string>
+		<string>2</string>
 		<key>Inputs</key>
 		<string>1</string>
 	</dict>
