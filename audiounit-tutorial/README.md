@@ -1,18 +1,18 @@
 #  AudioUnit Version 2 Tutorial
 
-In this tutorial you will learn how to add AudioUnit Version 2 support to your VST 3 Plug-In.
+In this tutorial you will learn how to add AudioUnit Version 2 support to your **VST 3** plug-in.
 
-First of all, you need a VST 3 plug-in project. For this tutorial we have generated one via the Project Generator from the SDK.
+First of all, you need a **VST 3** plug-in project. For this tutorial we have generated one via the [VST 3 Project Generator](https://steinbergmedia.github.io/vst3_dev_portal/pages/What+is+the+VST+3+SDK/Project+Generator.html) from the SDK.
 
 # Adding the AudioUnit Version 2 Target
 
 ## Obtaining the required AudioUnit SDK
 
-The AudioUnit Version 2 target needs the official AudioUnit SDK from Apple.
+The *AudioUnit Version 2* target needs the official *AudioUnit SDK* from Apple.
 As of this writing you can find it on GitHub: [https://github.com/apple/AudioUnitSDK](https://github.com/apple/AudioUnitSDK)
 
-How you obtain and store the SDK is up to you, for the reproducibility of this tutorial, we will download it via CMake when generating the project.
-So we add the following text to the CMakeLists.txt directly before we include the VST 3 SDK.
+How you obtain and store the SDK is up to you, for the reproducibility of this tutorial, we will download it via *CMake* when generating the project.
+So we add the following text to the *CMakeLists.txt* directly before we include the **VST 3 SDK**.
 
 ```
 include(FetchContent)
@@ -28,15 +28,15 @@ FetchContent_GetProperties(
 )
 ```
 
-It is important to set the `SMTG_AUDIOUNIT_SDK_PATH` variable to tell the VST 3 SDK where to find the AudioUnit SDK.
+It is important to set the `SMTG_AUDIOUNIT_SDK_PATH` variable to tell the **VST 3 SDK** where to find the AudioUnit SDK.
 
 ## Creating the property list
 
-For AudioUnit Version 2 you need a manufacturer OSType registered with Apple. 
+For *AudioUnit Version 2* you need a manufacturer OSType registered with Apple. 
 How to do this is out of the scope for this tutorial, please search the web on how this is done.
 
 Besides the manufacturer OSType you also need a subtype OSType which you can choose by yourself.
-Both the manufacturer and subtype account for the uniqueness of your AudioUnit Version 2.
+Both the manufacturer and subtype account for the uniqueness of your *AudioUnit Version 2*.
 
 Now you can generate the required property list file:
 
@@ -122,7 +122,7 @@ Save it to a file called `au-info.plist` inside the resource directory.
 
 ## Adding the AudioUnit Version 2 Target
 
-Now you can add the AudioUnit target to the end of your CMakeLists.txt file:
+Now you can add the AudioUnit target to the end of your *CMakeLists.txt* file:
 
 ```
 if (SMTG_MAC AND XCODE AND SMTG_COREAUDIO_SDK_PATH)
